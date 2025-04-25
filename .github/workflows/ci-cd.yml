@@ -21,3 +21,23 @@ jobs:
       - name: Push image to Docker Hub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/cicd-app:latest
 
+
+name: Deploy to S3 (Project2)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        path: project2  # Yeh line add karni hai
+
+    - name: Run deploy action for Project2
+      uses: ./.github/workflows/deploy.yml
