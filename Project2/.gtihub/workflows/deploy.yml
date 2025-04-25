@@ -23,3 +23,23 @@ jobs:
         AWS_REGION: ap-south-1
         SOURCE_DIR: ./Project2 # root of your repo
 
+
+name: Deploy to S3 (Project2)
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        path: project2  # Yeh line add karni hai
+
+    - name: Run deploy action for Project2
+      uses: ./.github/workflows/deploy.yml
